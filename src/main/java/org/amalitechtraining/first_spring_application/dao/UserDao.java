@@ -5,13 +5,17 @@ import org.amalitechtraining.first_spring_application.entity.User;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Repository
 public class UserDao {
-    private List<User> users = initializeUsers();
+    private List<User> users = new ArrayList<>();
 
+    public UserDao (){
+        initializeUsers();
+    }
     public List<User> findAll() {
         return this.users;
     }
@@ -29,12 +33,12 @@ public class UserDao {
         return users.getLast();
     }
 
-    private List<User> initializeUsers() {
+    private void initializeUsers() {
         var user = new User(
             "Seth",
             "Okyere",
             Gender.Male,
-            LocalDate.of(2002,9,15),
+            "2002-09-15",
             "eskay.dev7@gmail.com",
             "demoPassword"
         );
@@ -42,7 +46,7 @@ public class UserDao {
                 "Elijah",
                 "Okyere",
                 Gender.Male,
-                LocalDate.of(1999,10,21),
+                "1999-10-21",
                 "yaw.sam@gmail.com",
                 "demoPassword"
         );
@@ -50,11 +54,13 @@ public class UserDao {
                 "Sandra",
                 "Okyere",
                 Gender.Female,
-                LocalDate.of(1997,2,19),
+                "1997-02-14",
                 "akua.sandy@gmail.com",
                 "demoPassword"
         );
 
-       return List.of(user,user1,user2);
+       this.users.add(user);
+       this.users.add(user1);
+       this.users.add(user2);
     }
 }
