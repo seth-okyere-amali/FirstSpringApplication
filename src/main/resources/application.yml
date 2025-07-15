@@ -1,6 +1,17 @@
 spring:
   application:
     name: FirstSpringApplication
+  datasource:
+    url: jdbc:postgresql://localhost:5432/spring_db
+    username: seth
+    password: kuasi7
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
 
 server:
   port: 8080
