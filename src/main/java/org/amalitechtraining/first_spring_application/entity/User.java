@@ -21,7 +21,7 @@ public class User {
     public User(String firstName,
                 String lastName,
                 Gender gender,
-                LocalDate dateOfBirth,
+                String dateOfBirth,
                 String email,
                 String password
     ) {
@@ -29,7 +29,8 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
-        this.dateOfBirth = dateOfBirth;
+//        this.dateOfBirth = dateOfBirth;
+        this.dateOfBirth = LocalDate.parse(dateOfBirth);
         this.email = email;
         this.password = password;
     }
