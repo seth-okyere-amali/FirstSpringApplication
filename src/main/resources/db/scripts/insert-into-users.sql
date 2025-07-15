@@ -1,0 +1,3 @@
+INSERT INTO public.users (id, first_name, last_name, gender, date_of_birth, email, password) VALUES (1, 'Seth', 'Okyere', 'Male', '2002-09-15', 'eskay.dev7@gmail.com', 'demoPassword');
+INSERT INTO public.users (id, first_name, last_name, gender, date_of_birth, email, password) VALUES (2, 'Elijah', 'Okyere', 'Male', '1999-10-21', 'yaw.sam@gmail.com', 'demoPassword');
+INSERT INTO public.users (id, first_name, last_name, gender, date_of_birth, email, password) VALUES (3, 'Sandra', 'Okyere', 'Female', '1997-02-14', 'akua.sandy@gmail.com', 'demoPassword');
