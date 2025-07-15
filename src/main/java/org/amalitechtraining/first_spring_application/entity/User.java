@@ -1,21 +1,35 @@
 package org.amalitechtraining.first_spring_application.entity;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
+@Entity
+@Table(name = "users")
 public class User {
-    private static Long population = 0L;
 
-    public Long getId() {
-        return id;
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
 
-    private final Long id;
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
+
+    @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "password")
     private String password;
 
     public User(String firstName,
@@ -25,27 +39,15 @@ public class User {
                 String email,
                 String password
     ) {
-        this.id = ++population;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
-//        this.dateOfBirth = dateOfBirth;
         this.dateOfBirth = LocalDate.parse(dateOfBirth);
         this.email = email;
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", gender=" + gender +
-                ", dateOfBirth=" + dateOfBirth +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public User() {
     }
 
     @Override
@@ -58,6 +60,27 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(id, email);
+    }
+
+//    @Override
+//    public String toString() {
+//        return "User{" +
+//                "id=" + id +
+//                ", firstName='" + firstName + '\'' +
+//                ", lastName='" + lastName + '\'' +
+//                ", gender=" + gender +
+//                ", dateOfBirth=" + dateOfBirth +
+//                ", email='" + email + '\'' +
+//                ", password='" + password + '\'' +
+//                '}';
+//    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getFirstName() {

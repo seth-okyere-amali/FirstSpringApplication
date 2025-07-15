@@ -3,6 +3,7 @@ package org.amalitechtraining.first_spring_application.controller;
 import org.amalitechtraining.first_spring_application.entity.User;
 import org.amalitechtraining.first_spring_application.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,6 +35,12 @@ public class UserController {
     @PostMapping
     public ResponseEntity<User> register(@RequestBody User user) {
         var createdUser = userService.register(user);
-        return ResponseEntity.ok(createdUser);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.noContent().build();
     }
 }
