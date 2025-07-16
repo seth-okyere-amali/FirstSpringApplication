@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 @RestControllerAdvice
 public class SimpleExceptionHandling {
 
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<ExceptionResponse> handleException(UserNotFoundException e) {
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ExceptionResponse> handleException(ResourceNotFoundException e) {
         var error = new  ExceptionResponse(
                 HttpStatus.NOT_FOUND.toString(),
                 LocalDateTime.now(),
