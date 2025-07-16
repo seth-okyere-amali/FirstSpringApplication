@@ -6,8 +6,6 @@ spring:
     username: seth
     password: kuasi7
   jpa:
-    hibernate:
-      ddl-auto: create-only
     properties:
       hibernate:
         format_sql: true
