@@ -3,6 +3,7 @@ package org.amalitechtraining.first_spring_application.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -32,6 +33,12 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Address> addresses;
+
+    public User() {
+    }
+
     public User(String firstName,
                 String lastName,
                 Gender gender,
@@ -47,8 +54,9 @@ public class User {
         this.password = password;
     }
 
-    public User() {
-    }
+//    public List<Address> getAddresses() {
+//        return addresses;
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -74,6 +82,16 @@ public class User {
 //                ", password='" + password + '\'' +
 //                '}';
 //    }
+
+    public void addAddress(Address address) {
+        this.addresses.add(address);
+        address.setUser(this);
+    }
+
+    public void removeAddress(Address address) {
+        this.addresses.remove(address);
+        address.setUser(null);
+    }
 
     public void setId(Long id) {
         this.id = id;
